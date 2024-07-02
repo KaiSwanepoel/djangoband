@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<head>
+
+    <title>Login</title>
+
+    <link href = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel = "stylesheet" integrity = "sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+        crossorigin = "anonymous">
+
+    <style>
+        body {
+            text-align: center;
+            padding: 100px;
+        }
+        .btn-link {
+            color: red;
+        }
+        .btn-link:hover {
+            color: orangered;
+        }
+        .RollingPicture:hover {
+            transform: scale(1.1);
+        }
+
+    </style>
+
+</head>
+<body>
+    <h1>Login as User</h1>
+
+    <form action="{% url 'band:login' %}" method="post">
+        {% csrf_token %}
+
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" class="form-control" placeholder="User" required><br>
+                
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" class="form-control" placeholder="Password" required><br>
+                
+        <button type="submit" class="btn btn-danger">Login</button><br>
+    </form>
+    <div>
+        Don't have an account?<a href="{% url 'band:signup' %}" class="btn btn-link">Sign up</a>
+    </div><br><br>
+
+    <img src="{% static 'assets/stones.jpg' %}" alt="The Rolling Stones Logo" width="300" height="400" class="RollingPicture">
+
+</body>
+</html>
